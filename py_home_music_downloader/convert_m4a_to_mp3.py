@@ -5,7 +5,7 @@ import os
 def main():
     project_dir = pydpzpath.get_root_path()
     project_log_dir = project_dir.joinpath("logs")
-    project_music_dir = project_dir.joinpath("music")
+    project_music_dir = project_dir.joinpath("output")
 
     cmd_string_list = get_all_file_paths(project_music_dir)[0]
     original_file_list = get_all_file_paths(project_music_dir)[1]
@@ -87,12 +87,12 @@ def input_file_is_mp3(file):
     return file_is_mp3
 
 
-# "C:\Program Files\VideoLAN\VLC\vlc" -I dummy 'D:/Documents/Projects/Python/pyhomemusicdownloader/pyHomeMusicDownloader/music/idontwannabeyou.m4a'  --sout=#transcode{vcodec=h264,acodec=mpga,ab=128,channels=2,samplerate=44100,scodec=none}:std{access=file{no-overwrite},mux=mp4,dst='D:/Documents/Projects/Python/pyhomemusicdownloader/pyHomeMusicDownloader/music/idontwannabeyou.mp3'} vlc://quit
+# "C:\Program Files\VideoLAN\VLC\vlc" -I dummy 'D:/Documents/Projects/Python/pyhomemusicdownloader/pyHomeMusicDownloader/output/idontwannabeyou.m4a'  --sout=#transcode{vcodec=h264,acodec=mpga,ab=128,channels=2,samplerate=44100,scodec=none}:std{access=file{no-overwrite},mux=mp4,dst='D:/Documents/Projects/Python/pyhomemusicdownloader/pyHomeMusicDownloader/output/idontwannabeyou.mp3'} vlc://quit
 #
-# "C:\Program Files\VideoLAN\VLC\vlc" -I dummy 'D:/Documents/Projects/Python/pyhomemusicdownloader/pyHomeMusicDownloader/music/idontwannabeyou.m4a' --sout=#transcode{acodec=mp3,vcodec=dummy}:standard{access=file,mux=raw,dst='D:/Documents/Projects/Python/pyhomemusicdownloader/pyHomeMusicDownloader/music/idontwannabeyou.mp3'}
+# "C:\Program Files\VideoLAN\VLC\vlc" -I dummy 'D:/Documents/Projects/Python/pyhomemusicdownloader/pyHomeMusicDownloader/output/idontwannabeyou.m4a' --sout=#transcode{acodec=mp3,vcodec=dummy}:standard{access=file,mux=raw,dst='D:/Documents/Projects/Python/pyhomemusicdownloader/pyHomeMusicDownloader/output/idontwannabeyou.mp3'}
 
 #PLays song without gui
-# "C:\Program Files\VideoLAN\VLC\vlc" -I dummy --dummy-quiet "D:\Documents\Projects\Python\pyhomemusicdownloader\pyHomeMusicDownloader\music\idontwannabeyou.m4a"
+# "C:\Program Files\VideoLAN\VLC\vlc" -I dummy --dummy-quiet "D:\Documents\Projects\Python\pyhomemusicdownloader\pyHomeMusicDownloader\output\idontwannabeyou.m4a"
 
 if __name__ == '__main__':
     main()

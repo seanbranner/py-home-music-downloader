@@ -7,7 +7,7 @@ import os
 
 def main():
     project_dir = pydpzpath.get_root_path()
-    project_music_dir = project_dir.joinpath("music")
+    project_music_dir = project_dir.joinpath("output")
 
     artist = None
     album = None
@@ -19,7 +19,7 @@ def main():
         pydpzpath.create_dir("logs")
 
     if not project_music_dir.exists():
-        pydpzpath.create_dir("music")
+        pydpzpath.create_dir("output")
 
     video_list_file = open(video_list_path, "r")
 
