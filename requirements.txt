@@ -1,0 +1,10 @@
+coverage==5.5
+deprecation==2.1.0
+ffmpeg==1.4
+filetype==1.0.8
+mutagen==1.45.1
+packaging==21.0
+pydub==0.25.1
+pyparsing==2.4.7
+toml==0.10.2
+youtube-dl==2021.6.6
