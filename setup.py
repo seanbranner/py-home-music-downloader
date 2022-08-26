@@ -18,7 +18,15 @@ setuptools.setup(
     license='MIT',
     packages=['py_sql_table_copy_service'],
     install_requires=[
-        'sqlalchemy',
-        'pandas'
+        'coverage',
+        'deprecation',
+        'ffmpeg',
+        'filetype',
+        'mutagen',
+        'packaging',
+        'pydub',
+        'pyparsing',
+        'toml',
+        'youtube - dl',
     ],
 )

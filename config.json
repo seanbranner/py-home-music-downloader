@@ -1,43 +1,7 @@
 {
-  "APP": {
-    "TABLES": [
-      "US\\bezawaa1.module_tbl",
-      "US\\bezawaa1.project_tbl",
-      "US\\bezawaa1.testcase_tbl"
-    ],
-    "TEST_TABLES": [
-      "tstprd.COE_TEST01_EXAMPLE_DATA",
-      "dbo.COE_TEST01_EXAMPLE_DATA"
-    ],
-
-    "DEBUG": true
-  },
-  "SOURCE_DATABASE": {
-      "USERNAME": "uipathdev_svc",
-      "PASSWORD": "",
-      "HOST": "UiPathDev,51392",
-      "PORT": 1433,
-      "DB": "UiPathAutomation_dev"
-  },
-  "TARGET_DATABASE": {
-      "USERNAME": "uipathprod_svc",
-      "PASSWORD": "",
-      "HOST": "UiPathProd,51326",
-      "PORT": 1433,
-      "DB": "UiPathAutomation_prod"
-  },
-  "TEST_SOURCE_DATABASE": {
-      "USERNAME": "svc_performancee_t",
-      "PASSWORD": "",
-      "HOST": "MIHQCORPDDB01\\MIHQCOPRDDB01",
-      "PORT": 1433,
-      "DB": "QualityDataWarehouse"
-  },
-  "TEST_TARGET_DATABASE": {
-      "USERNAME": "svc_performancee_t",
-      "PASSWORD": "",
-      "HOST": "MIHQCORPDDB01\\MIHQCOPRDDB01",
-      "PORT": 1433,
-      "DB": "QualityDataWarehouse"
+  "MUSIC": {
+    "URL_LIST": [
+      "https://music.youtube.com/playlist?list=OLAK5uy_ncP2eLoS2gbKnwX2n9tdK7UTqSo2tp_vM&feature=share"
+    ]
   }
 }
