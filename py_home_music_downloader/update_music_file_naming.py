@@ -20,9 +20,11 @@ def main():
 
 def convert_name(initial_name):
 
+    extension = initial_name.split(".")[-1]
+
     new_name_list = initial_name.split("-")
 
-    return f"{new_name_list[0]}.mp4"
+    return f"{new_name_list[0]}.{extension}"
 
 print(convert_name(example_file_name))
 
