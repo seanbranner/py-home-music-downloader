@@ -23,12 +23,8 @@ def main():
     #     pydpzpath.delete_path(file)
 
 
-def file_is_audio(file):
+def file_is_video(file):
     return file[-4:] == '.m4a'
-
-
-def file_is_mp4(file):
-    return file[-4:] == '.mp4'
 
 
 def get_all_file_paths(project_music_dir):
@@ -44,7 +40,7 @@ def get_all_file_paths(project_music_dir):
 
         file_is_dir = os.path.isdir(file_path)
         file_is_mp3 = input_file_is_mp3(file)
-        file_is_audio_file = file_is_audio(file)
+        file_is_audio_file = file_is_video(file)
 
         if not file_is_dir:
             if not file_is_mp3 and file_is_audio_file:
@@ -63,7 +59,7 @@ def get_all_file_paths(project_music_dir):
 
                 file_is_dir = os.path.isdir(artist_dir_song_path)
                 file_is_mp3 = input_file_is_mp3(album)
-                file_is_audio_file = file_is_audio(album)
+                file_is_audio_file = file_is_video(album)
                 file_is_mp4 = file_is_mp4(album)
 
                 if not file_is_dir:
@@ -91,7 +87,7 @@ def get_all_file_paths(project_music_dir):
 
                         file_is_dir = os.path.isdir(song_file_path)
                         file_is_mp3 = input_file_is_mp3(song)
-                        file_is_audio_file = file_is_audio(song)
+                        file_is_audio_file = file_is_video(song)
 
                         if not file_is_dir:
                             if not file_is_mp3 and file_is_audio_file:

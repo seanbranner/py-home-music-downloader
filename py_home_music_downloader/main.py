@@ -30,8 +30,8 @@ def main():
     if not project_music_dir_exists:
         os.mkdir(str(project_music_dir))
 
-    # audio_downloder = YoutubeDL({'format': 'bestaudio[ext=m4a]/best[ext=mp4]/best'})
-    audio_downloder = YoutubeDL({'format': 'bestaudio[ext=mmp4]/best[ext=mp4]/best'})
+    audio_downloder = YoutubeDL({'format': 'bestaudio[ext=m4a]/best[ext=mp4]/best'})
+    # audio_downloder = YoutubeDL({'format': 'bestaudio[ext=mmp4]/best[ext=mp4]/best'})
 
     os.chdir(project_music_dir)
     for music_url in music_list:
