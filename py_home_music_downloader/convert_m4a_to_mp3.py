@@ -10,17 +10,12 @@ def main():
     except Exception:
         project_path = (Path(__file__).parents[1])
 
-    project_log_dir = project_path.joinpath("logs")
     project_music_dir = project_path.joinpath("output")
 
-    cmd_string_list = get_all_file_paths(project_music_dir)[0]
-    original_file_list = get_all_file_paths(project_music_dir)[1]
+    cmd_string_list = get_all_file_paths(project_music_dir)
 
     for cmd in cmd_string_list:
         subprocess.run(cmd)
-
-    # for file in original_file_list:
-    #     pydpzpath.delete_path(file)
 
 
 def file_is_video(file):
@@ -60,17 +55,9 @@ def get_all_file_paths(project_music_dir):
                 file_is_dir = os.path.isdir(artist_dir_song_path)
                 file_is_mp3 = input_file_is_mp3(album)
                 file_is_audio_file = file_is_video(album)
-                file_is_mp4 = file_is_mp4(album)
 
                 if not file_is_dir:
                     if not file_is_mp3 and file_is_audio_file:
-                        original_file_list.append(artist_dir_song_path)
-                        cmd_string = "\"C:\\Program Files\\VideoLAN\VLC\\vlc.exe\" -I dummy \"" + str(
-                            artist_dir_song_path) + "\" \":sout=#transcode{acodec=mpga,ab=192}:std{dst=\'" + str(
-                            new_artist_dir_song_path) + "\',access=file}\" vlc://quit"
-                        cmd_string_list.append(cmd_string)
-
-                    if file_is_mp4 and file_is_audio_file:
                         original_file_list.append(artist_dir_song_path)
                         cmd_string = "\"C:\\Program Files\\VideoLAN\VLC\\vlc.exe\" -I dummy \"" + str(
                             artist_dir_song_path) + "\" \":sout=#transcode{acodec=mpga,ab=192}:std{dst=\'" + str(
@@ -99,7 +86,7 @@ def get_all_file_paths(project_music_dir):
                         else:
                             print("done")
 
-    return cmd_string_list, original_file_list
+    return cmd_string_list
 
 
 def input_file_is_mp3(file):
