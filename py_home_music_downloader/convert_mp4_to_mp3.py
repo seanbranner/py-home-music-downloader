@@ -23,11 +23,7 @@ def main():
     #     pydpzpath.delete_path(file)
 
 
-def file_is_audio(file):
-    return file[-4:] == '.m4a'
-
-
-def file_is_mp4(file):
+def file_is_a_mp4(file):
     return file[-4:] == '.mp4'
 
 
@@ -44,7 +40,7 @@ def get_all_file_paths(project_music_dir):
 
         file_is_dir = os.path.isdir(file_path)
         file_is_mp3 = input_file_is_mp3(file)
-        file_is_audio_file = file_is_audio(file)
+        file_is_audio_file = file_is_a_mp4(file)
 
         if not file_is_dir:
             if not file_is_mp3 and file_is_audio_file:
@@ -63,8 +59,7 @@ def get_all_file_paths(project_music_dir):
 
                 file_is_dir = os.path.isdir(artist_dir_song_path)
                 file_is_mp3 = input_file_is_mp3(album)
-                file_is_audio_file = file_is_audio(album)
-                file_is_mp4 = file_is_mp4(album)
+                file_is_audio_file = file_is_a_mp4(album)
 
                 if not file_is_dir:
                     if not file_is_mp3 and file_is_audio_file:
@@ -74,12 +69,6 @@ def get_all_file_paths(project_music_dir):
                             new_artist_dir_song_path) + "\',access=file}\" vlc://quit"
                         cmd_string_list.append(cmd_string)
 
-                    if file_is_mp4 and file_is_audio_file:
-                        original_file_list.append(artist_dir_song_path)
-                        cmd_string = "\"C:\\Program Files\\VideoLAN\VLC\\vlc.exe\" -I dummy \"" + str(
-                            artist_dir_song_path) + "\" \":sout=#transcode{acodec=mpga,ab=192}:std{dst=\'" + str(
-                            new_artist_dir_song_path) + "\',access=file}\" vlc://quit"
-                        cmd_string_list.append(cmd_string)
 
                 else:
                     song_list = os.listdir(artist_dir_song_path)
@@ -91,7 +80,7 @@ def get_all_file_paths(project_music_dir):
 
                         file_is_dir = os.path.isdir(song_file_path)
                         file_is_mp3 = input_file_is_mp3(song)
-                        file_is_audio_file = file_is_audio(song)
+                        file_is_audio_file = file_is_a_mp4(song)
 
                         if not file_is_dir:
                             if not file_is_mp3 and file_is_audio_file:
