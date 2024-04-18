@@ -16,42 +16,6 @@ except Exception:
     project_path = Path(__file__).parents[1]
 
 project_music_dir = project_path.joinpath("output")
-# example_artist_path = project_music_dir.joinpath("Shiro SAGISU")
-# example_album_path = example_artist_path.joinpath("Number One - Bankai")
-# example_music_file_path = example_album_path.joinpath("Number One.mp3")
-#
-# try:
-#     file_object = mutagen.File(example_music_file_path)
-#     file_object.add_tags()
-#     file_object.save()
-# except:
-#     print("Already has tags")
-# tags = EasyID3(example_music_file_path)
-#
-# tags["album"] = "Number One"
-# example = "example"
-# print(f"u'{example}'")
-#
-# tags["bpm"] = example
-# tags["compilation"] = "0"
-# tags["composer"] = "composer_example"
-# tags["encodedby"] = "encoded_by_example"
-# tags["title"] = "Number One"
-# tags["version"] = "subtitle_example"
-# tags["artist"] = "contribute_artist_example"
-# tags["albumartist"] = "Shiro SAGISU"
-# tags["conductor"] = "conductor_example"
-# tags["discnumber"] = "part_of_set_flag?"
-# tags["organization"] = "publishers_example"
-# tags["tracknumber"] = "2"
-# tags["genre"] = "Anime"
-# tags["date"] = "2022"
-# tags["website"] = "author_url_example"
-#
-# print(tags)
-#
-# tags.save()
-
 
 def update_all_tags():
     album_json_list = get_album_json_list()
