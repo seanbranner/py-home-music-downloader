@@ -1,14 +1,14 @@
 import os
 from pathlib import Path
 import sys
-example_file_name = "WAKE UP-fCd78KkOrFc.mp4"
 
 try:
     project_path = Path(sys._MEIPASS)
 except Exception:
-    project_path = (Path(__file__).parents[1])
+    project_path = Path(__file__).parents[1]
 
 project_music_dir = project_path.joinpath("output")
+
 
 def main():
     list_of_files_in_music_folder = os.listdir(project_music_dir)
@@ -18,6 +18,7 @@ def main():
         new_name_path = project_music_dir.joinpath(convert_name(music_file))
         os.rename(str(original_name_path), str(new_name_path))
 
+
 def convert_name(initial_name):
     extension = initial_name.split(".")[-1]
 
@@ -25,9 +26,6 @@ def convert_name(initial_name):
 
     return f"{new_name_list}.{extension}"
 
-print(convert_name(example_file_name))
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-
-
