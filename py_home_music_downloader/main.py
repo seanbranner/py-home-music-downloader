@@ -29,17 +29,17 @@ if not json_dir_path_exists:
 def main():
     print("Starting Main...")
 
-    # list_of_json_paths = download_youtube_link_audio.download_songs_and_save_detail_json()
-    #
-    # pkl_utils.save_all_jsons_from_json_path(list_of_json_paths)
-    #
-    # convert_m4a_to_mp3.main()
-    #
-    # pydpzpath.delete_m4a_files_from_output()
+    list_of_json_paths = download_youtube_link_audio.download_songs_and_save_detail_json()
 
-    # pydpzpath.build_music_directories()
+    pkl_utils.save_all_jsons_from_json_path(list_of_json_paths)
 
-    # pydpzpath.move_songs_to_their_respective_album()
+    convert_m4a_to_mp3.main()
+
+    pydpzpath.delete_m4a_files_from_output()
+
+    pydpzpath.build_music_directories()
+
+    pydpzpath.move_songs_to_their_respective_album()
 
     update_metadata.update_all_tags()
 
