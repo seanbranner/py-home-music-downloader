@@ -19,12 +19,11 @@ def main():
         os.rename(str(original_name_path), str(new_name_path))
 
 def convert_name(initial_name):
-
     extension = initial_name.split(".")[-1]
 
-    new_name_list = initial_name.split("-")
+    new_name_list = initial_name.split("-")[0].strip()
 
-    return f"{new_name_list[0]}.{extension}"
+    return f"{new_name_list}.{extension}"
 
 print(convert_name(example_file_name))
 
