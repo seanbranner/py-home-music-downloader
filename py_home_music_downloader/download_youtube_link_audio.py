@@ -40,16 +40,20 @@ def run_youtube_dl_cmd():
     subprocess.run(updating_config_cmd)
 
 
-def download_songs_and_save_detail_json():
+def download_media_from_url_list(type=None):
+    os.chdir(output_dir_path)
     list_of_youtube_results = []
 
-    params = {"format": "bestaudio[ext=m4a]/best[ext=mp4]/best"}
-    audio_downloder = YoutubeDL(params=params)
-    os.chdir(output_dir_path)
-
     for music_url in music_list:
+        if 'video' in type:
+            params = {"format": "bestvideo[ext=mp4]"}
+        else:
+            params = {"format": "bestaudio[ext=m4a]/best[ext=mp4]/best"}
+
+        media_downloader = YoutubeDL(params=params)
+
         try:
-            results_from_youtube = audio_downloder.extract_info(music_url)
+            results_from_youtube = media_downloader.extract_info(music_url)
             list_of_youtube_results.append(results_from_youtube)
         except:
             with open(incomplete_file_path, "w") as file1:

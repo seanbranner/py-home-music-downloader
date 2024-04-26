@@ -29,7 +29,7 @@ if not json_dir_path_exists:
 def main():
     print("Starting Main...")
 
-    list_of_json_paths = download_youtube_link_audio.download_songs_and_save_detail_json()
+    list_of_json_paths = download_youtube_link_audio.download_media_from_url_list()
 
     pkl_utils.save_all_jsons_from_json_path(list_of_json_paths)
 

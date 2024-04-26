@@ -80,12 +80,11 @@ def update_tags(
         return
 
     try:
-
         file_object = mutagen.File(file_path)
         file_object.add_tags()
         file_object.save()
     except Exception as e:
-        print(e)
+        print(f"{e}: {file_path}")
 
     tags = EasyID3(file_path)
 
