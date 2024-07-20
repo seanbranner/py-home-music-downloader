@@ -2,4 +2,4 @@
 
 Updated to only take albums for now.
 
--incomplete
+Updating everything to also work on mac machines depedning on witch diection i go.
