@@ -1,5 +1,5 @@
 import unittest
-from py_home_music_downloader import convert_m4a_to_mp3
+from py_home_music_downloader import vlc_utils
 from pathlib import Path
 import sys
 
@@ -14,9 +14,9 @@ test_output_dir = test_dir.joinpath('output')
 
 class TestM4aToMp3(unittest.TestCase):
 
-    def test_get_mp3_convert_cmd_list(self):
-        expected = 'tests'
-        actual = convert_m4a_to_mp3.get_mp3_convert_cmd_list(test_output_dir)
+    def test_get_vlc_home(self):
+        expected = 'some_path'
+        actual = vlc_utils.get_vlc_home()
         print(actual)
         self.assertEqual(expected, actual)
 

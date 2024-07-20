@@ -2,15 +2,17 @@ import subprocess
 import os
 from pathlib import Path
 import sys
+from py_home_music_downloader import os_utils
+
+try:
+    project_path = Path(sys._MEIPASS)
+except Exception:
+    project_path = Path(__file__).parents[1]
+
+project_music_dir = project_path.joinpath("output")
 
 
 def main():
-    try:
-        project_path = Path(sys._MEIPASS)
-    except Exception:
-        project_path = Path(__file__).parents[1]
-
-    project_music_dir = project_path.joinpath("output")
 
     cmd_string_list = get_mp3_convert_cmd_list(project_music_dir)
 
@@ -27,8 +29,13 @@ def get_mp3_convert_cmd_list(output_dir_path):
     cmd_string_list = []
     original_file_list = []
 
-    music_file_list = os.listdir(output_dir_path)
-    music_file_list.remove("jsons")
+    # music_file_list = os.listdir(output_dir_path)
+    music_file_list = ['test_file.m4a']
+
+    try:
+        music_file_list.remove("jsons")
+    except:
+        pass
 
     for file in music_file_list:
         original_music_file_path = output_dir_path.joinpath(file)
@@ -67,6 +74,3 @@ def input_file_is_mp3(file):
 
 # PLays song without gui
 # "C:\Program Files\VideoLAN\VLC\vlc" -I dummy --dummy-quiet "D:\Documents\Projects\Python\pyhomemusicdownloader\pyHomeMusicDownloader\output\idontwannabeyou.m4a"
-
-if __name__ == "__main__":
-    main()
