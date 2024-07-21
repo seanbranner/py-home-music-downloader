@@ -14,24 +14,16 @@ test_output_dir = test_dir.joinpath('output')
 
 class TestM4aToMp3(unittest.TestCase):
 
-    def test_get_vlc_home(self):
-        expected = 'some_path'
-        actual = vlc_utils.get_vlc_home()
-        print(actual)
+    def test_get_vlc_home_windows(self):
+        expected = 'C:\\Program Files\\VideoLAN\VLC\\vlc.exe'
+        actual = vlc_utils.get_vlc_home('Windows')
         self.assertEqual(expected, actual)
 
-
-    def test_original_test(self):
-        file_path = "example_file_path.m4a"
-        new_file_path = "example_new_file_path.mp3"
-
-        cmd_string = (
-                '"C:\\Program Files\\VideoLAN\VLC\\vlc.exe" -I dummy "'
-                + str(file_path)
-                + '" ":sout=#transcode{acodec=mpga,ab=192}:std{dst=\''
-                + str(new_file_path)
-                + "',access=file}\" vlc://quit"
-        )
+    def test_get_vlc_home_mac(self):
+        expected = '/Applications/VLC.app/Contents/MacOS/VLC'
+        actual = vlc_utils.get_vlc_home('Darwin')
+        print(actual)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == "__main__":
