@@ -2,7 +2,10 @@ import subprocess
 import os
 from pathlib import Path
 import sys
-from py_home_music_downloader import os_utils
+from py_home_music_downloader import os_utils,vlc_utils
+
+os_name = os_utils.get_operating_system()
+vlc_home = vlc_utils.get_vlc_home(os_name)
 
 try:
     project_path = Path(sys._MEIPASS)
@@ -51,7 +54,7 @@ def get_mp3_convert_cmd_list(output_dir_path):
             if file_is_m4a:
                 original_file_list.append(original_music_file_path)
                 cmd_string = (
-                    '"C:\\Program Files\\VideoLAN\VLC\\vlc.exe" -I dummy "'
+                    '"'+vlc_home+'" -I dummy "'
                     + str(original_music_file_path)
                     + '" ":sout=#transcode{acodec=mpga,ab=192}:std{dst=\''
                     + str(new_music_file_path)

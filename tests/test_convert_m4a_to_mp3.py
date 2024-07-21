@@ -15,23 +15,17 @@ test_output_dir = test_dir.joinpath('output')
 class TestM4aToMp3(unittest.TestCase):
 
     def test_get_mp3_convert_cmd_list(self):
-        expected = 'tests'
+        file_path = "/Users/seanyb05/Documents/Projects/Python/py-home-music-downloader/tests/output/test_file.m4a"
+        new_file_path = "/Users/seanyb05/Documents/Projects/Python/py-home-music-downloader/tests/output/test_file.mp3"
+        expected = [(
+                '"/Applications/VLC.app/Contents/MacOS/VLC" -I dummy "'
+                +str(file_path)
+                +'" ":sout=#transcode{acodec=mpga,ab=192}:std{dst=\''
+                +str(new_file_path)
+                +"',access=file}\" vlc://quit"
+        )]
         actual = convert_m4a_to_mp3.get_mp3_convert_cmd_list(test_output_dir)
-        print(actual)
         self.assertEqual(expected, actual)
-
-
-    def test_original_test(self):
-        file_path = "example_file_path.m4a"
-        new_file_path = "example_new_file_path.mp3"
-
-        cmd_string = (
-                '"C:\\Program Files\\VideoLAN\VLC\\vlc.exe" -I dummy "'
-                + str(file_path)
-                + '" ":sout=#transcode{acodec=mpga,ab=192}:std{dst=\''
-                + str(new_file_path)
-                + "',access=file}\" vlc://quit"
-        )
 
 
 if __name__ == "__main__":
