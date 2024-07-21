@@ -27,6 +27,15 @@ class TestM4aToMp3(unittest.TestCase):
         actual = convert_m4a_to_mp3.get_mp3_convert_cmd_list(test_output_dir)
         self.assertEqual(expected, actual)
 
+    def test_run_conversion(self):
+        expected = 1
+        actual = convert_m4a_to_mp3.run_conversion()
+        self.assertEqual(expected, actual)
+
+    def test_convert_ffmpeg(self):
+        expected = 1
+        actual = convert_m4a_to_mp3.run_ffmpeg_conversion(test_output_dir)
+        self.assertEqual(expected, actual)
 
 if __name__ == "__main__":
     unittest.main()
