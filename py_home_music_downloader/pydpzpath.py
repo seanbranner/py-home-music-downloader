@@ -5,8 +5,9 @@ import sys
 import os
 import shutil
 import py_home_music_downloader
+import utils_path
+import utils_pkl
 import string_utils
-import pkl_utils
 
 try:
     project_path = Path(sys._MEIPASS)
@@ -35,7 +36,7 @@ def isdir(input_path):
 
 
 def build_music_directories():
-    album_json_list = pkl_utils.get_album_json_list()
+    album_json_list = utils_pkl.get_album_json_list()
 
     for album_json in album_json_list:
         entries = album_json["entries"]

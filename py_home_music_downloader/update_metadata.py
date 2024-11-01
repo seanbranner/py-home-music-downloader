@@ -1,14 +1,13 @@
 import os
-
+from mutagen.oggopus import OggOpus
 from mutagen.easyid3 import EasyID3
+from mutagen.mp4 import MP4
+
 import mutagen
 from pathlib import Path
 import sys
 
-from py_home_music_downloader.main import output_dir_path
-from py_home_music_downloader.dict_utils import try_dict
-from py_home_music_downloader.pkl_utils import get_album_json_list
-from py_home_music_downloader.string_utils import extract_album_name
+from py_home_music_downloader import utils_dict, utils_pkl, utils_path
 
 try:
     project_path = Path(sys._MEIPASS)
@@ -16,6 +15,7 @@ except Exception:
     project_path = Path(__file__).parents[1]
 
 project_music_dir = project_path.joinpath("output")
+
 
 def update_all_tags():
     album_json_list = get_album_json_list()
@@ -86,7 +86,39 @@ def update_tags(
     except Exception as e:
         print(f"{e}: {file_path}")
 
-    tags = EasyID3(file_path)
+    file_type = str(file_path).split('.')[-1]
+
+    file_is_mp3 = 'mp3' in file_type
+    file_is_mp4 = 'mp4' in file_type
+    file_is_opus = 'opus' in file_type
+    file_is_m4a = 'm4a' in file_type
+
+    if file_is_opus:
+        tags = OggOpus(file_path)
+
+    if file_is_mp3:
+        tags = EasyID3(file_path)
+
+    if file_is_mp4 or file_is_m4a:
+        tags = MP4(file_path)
+        if title:
+            tags["\xa9nam"] = str(title)
+
+        if albumartist:
+            tags["\xa9ART"] = str(albumartist)
+
+        if albumartist:
+            tags["aART"] = str(albumartist)
+
+        if tracknumber:
+            tags["trkn"] = str(tracknumber)
+
+        if album:
+            tags["\xa9alb"] = str(album)
+
+        tags.save()
+        print(tags)
+
 
     if album:
         tags["album"] = str(album)
@@ -137,3 +169,4 @@ def update_tags(
         tags["website"] = str(website)
 
     tags.save()
+

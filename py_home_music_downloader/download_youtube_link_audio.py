@@ -3,9 +3,9 @@ import sys
 from pathlib import Path
 import subprocess
 from yt_dlp import YoutubeDL
-import pkl_utils
+import utils_pkl
 from dotenv import load_dotenv
-import dict_utils
+import utils_dict
 
 load_dotenv()
 
