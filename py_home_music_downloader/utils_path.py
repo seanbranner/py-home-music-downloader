@@ -1,6 +1,11 @@
 import getpass
 from pathlib import Path
 import os
+import platform
+from dotenv import load_dotenv
+import mimetypes
+
+load_dotenv()
 
 def extract_album_name(title):
     if "- Album – " in title:
@@ -13,9 +18,23 @@ def extract_album_name(title):
         split_album.pop(0)
         return "-".join(split_album).strip()
 
+def get_audio_files_from_file_list(list_of_files):
+    audio_list = []
+    for file in list_of_files:
+        file_exstension = file.split('.')[-1]
+        audio_file_extension_list = os.getenv("MUSIC_EXTENSION_LIST")
+        if file_exstension in audio_file_extension_list:
+            audio_list.append(file)
+    return audio_list
 
-import platform
-
+def get_albums_from_file_list(list_of_files):
+    audio_list = []
+    for file in list_of_files:
+        file_exstension = file.split('.')[-1]
+        audio_file_extension_list = os.getenv("MUSIC_EXTENSION_LIST")
+        if file_exstension in audio_file_extension_list:
+            audio_list.append(file)
+    return audio_list
 
 def extract_song_title(song_title):
     has_bit_tag = "(" in song_title and ")" in song_title and "bit" in song_title
@@ -48,6 +67,7 @@ def get_home_download_dir():
         home_download_directory = Path("/Downloads")
 
     return home_download_directory
+
 
 def determine_file_types(file_list):
     path_organization_json = {

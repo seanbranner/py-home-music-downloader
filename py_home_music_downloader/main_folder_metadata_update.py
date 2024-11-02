@@ -2,7 +2,8 @@ import os
 import sys
 from pathlib import Path
 import update_metadata
-
+import utils_path
+import mimetypes
 
 try:
     project_path = Path(sys._MEIPASS)
@@ -10,10 +11,31 @@ except Exception:
     project_path = Path(__file__).parents[1]
 
 output_dir_path = project_path.joinpath("output")
+resource_path = project_path.joinpath("tests").joinpath("resources")
 json_dir_path = output_dir_path.joinpath("jsons")
 music_dir_path = Path("\\\\CHANSEY\\Home_Storage\\Music")
 
+test_album_path = resource_path.joinpath("Meghan Trainor")
+
 def main():
+    album_list = os.listdir(test_album_path)
+    for album_name in album_list:
+        album_path = test_album_path.joinpath(album_name)
+        if album_path.is_dir():
+            song_list = os.listdir(album_path)
+            song_list = utils_path.get_audio_files_from_file_list(song_list)
+
+            for song_name in song_list:
+                print(song_name)
+    exit()
+
+
+    if mimestart != None:
+        mimestart = mimestart.split('/')[0]
+
+        if mimestart in ['audio', 'video', 'image']:
+            print("media types")
+
     print('starting')
     # artist_name_list = os.listdir(music_dir_path)
     # for artist_name in artist_name_list:
